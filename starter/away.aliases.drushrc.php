@@ -29,11 +29,25 @@
  * Local alias
  * Set the root and site_path values to point to your local site
  */
-$aliases['away.local'] = array(
+$aliases['local'] = array(
   'root' => '/Users/pittet/Sites/away/public',
   'uri'  => 'away.dev',
   'path-aliases' => array(
     '%dump-dir' => '/tmp',
+  ),
+  'target-command-specific' => array(
+    'sql-sync' => array(
+      'sanitize' => TRUE,
+      'confirm-sanitizations' => TRUE,
+      'no-ordered-dump' => TRUE,
+      'no-cache' => TRUE,
+      'enable' => array(
+        'devel',
+        'stage_file_proxy',
+        'fields_ui',
+        'views_ui',
+      ),
+    ),
   ),
 );
 
@@ -41,7 +55,7 @@ $aliases['away.local'] = array(
  * Development alias
  * Set up each entry to suit your site configuration
  */
-$aliases['away.stage'] = array (
+$aliases['stage'] = array (
   'uri' => 'http://stage-away.science.ubc.ca',
   'root' => '/var/www/html/stage-away/public',
   'remote-user' => 'fosadmin',
@@ -58,7 +72,6 @@ $aliases['away.stage'] = array (
   // No need to modify the following settings
   'command-specific' => array (
     'sql-sync' => array (
-      'sanitize' => TRUE,
       'no-ordered-dump' => TRUE,
       'structure-tables' => array(
        // You can add more tables which contain data to be ignored by the database dump
