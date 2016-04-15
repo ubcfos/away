@@ -1,0 +1,48 @@
+
+# Drupal files
+##############
+# Ignore configuration files that may contain sensitive information.
+settings.local.php
+
+# Ignore paths that contain user-generated content.
+*/sites/*/files
+*/sites/*/private
+/private
+
+# Drupal's version of .gitignore
+/public/.gitignore
+
+# Working files that are related to the project but not committed.
+/working
+
+# Apache and other log folder for the project.
+/logs
+
+# Local backups.
+/backups
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Patch generated files
+*.orig
+*.rej
+
+# Tool generated
+.svn
+.sass-cache
+*.swp
+
+# IDE files & folders
+# IDE folders (PHPStorm, Netbeans, etc)
+.idea
+nbproject
+*.project
