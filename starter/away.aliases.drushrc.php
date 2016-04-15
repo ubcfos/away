@@ -2,6 +2,8 @@
 /**
  * @file away.aliases.drushrc.php
  *
+ * @see https://www.drupal.org/node/1401522
+ *
  * Site aliases for Away Project
  * Place this file at ~/.drush/  (~/ means your home path)
  *
@@ -22,6 +24,18 @@
  *   $ cd /path/to/settings.php/of/the/site/
  *   $ drush site-alias @self --full --with-optional >> ~/.drush/mysite.aliases.drushrc.php
  */
+
+/**
+ * Local alias
+ * Set the root and site_path values to point to your local site
+ */
+$aliases['away.local'] = array(
+  'root' => '/Users/pittet/Sites/away/public',
+  'uri'  => 'away.dev',
+  'path-aliases' => array(
+    '%dump-dir' => '/tmp',
+  ),
+);
 
 /**
  * Development alias
