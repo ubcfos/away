@@ -26,6 +26,7 @@ to do this is in ~/Sites
    
     $ cd ~/Sites
     $ git clone https://github.com/<YOUR USERNAME>/away
+    $ cd away
     $ git remote add upstream https://github.com/ubcfos/away
 
   3. Grab a copy of the drupal-vm project. A good place to do this would be into
@@ -37,8 +38,8 @@ to do this is in ~/Sites
   4. Copy our local configuration into drupal-vm
    
     $ cd ~/drupal-vm
-    $ cp ~/Sites/config.yml .
-    $ cp ~/Sites/drupal.make.yml .
+    $ cp ~/Sites/away/starter/config.yml .
+    $ cp ~/Sites/away/starter/drupal.make.yml .
 
   5. If you used a different location in step 2. make sure you update the
      local_path value in config.yml. This directory will be NFS mounted inside
