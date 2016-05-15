@@ -38,12 +38,15 @@ to do this is in ~/Sites
     $ cd ~/
     $ git clone https://github.com/geerlingguy/drupal-vm.git
 ```
+
 4. Copy our local configuration into drupal-vm
+
 ```
     $ cd ~/drupal-vm
     $ cp ~/Sites/away/starter/config.yml .
     $ cp ~/Sites/away/starter/drupal.make.yml .
 ```
+
 5. If you used a different location in step 2. make sure you update the
    local_path value in config.yml. This directory will be NFS mounted inside
    your drupal-vm. Please note there are some default usernames and passwords
@@ -51,9 +54,11 @@ to do this is in ~/Sites
    so should not present a security risk, but you can update them if you wish.
 
 6. Create and provision the VM.
+
 ```
     $ vagrant up
 ```
+
 At this point you should see a lot of output which is the machine being created
 and all of the packages installed. Drupal will also be installed at this time.
 Look for "failed=0" on the final line, this indicates things were successful.
@@ -62,6 +67,7 @@ visiting http://192.168.88.88 in your browser and copying the address table in
 the top right of the page
 
 7. Add the new entries to the end of /etc/hosts, e.g.
+
 ```
     $ vi /etc/hosts
     ...
