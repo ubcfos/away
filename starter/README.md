@@ -23,24 +23,24 @@ to do this is in ~/Sites
   2. On your new fork, copy the clone URL and clone it to your laptop. We will
      also add the ubcfos repository as an upstream so that we can gather
      changes from it later.
-   
+```   
     $ cd ~/Sites
     $ git clone https://github.com/<YOUR USERNAME>/away
     $ cd away
     $ git remote add upstream https://github.com/ubcfos/away
-
+```
   3. Grab a copy of the drupal-vm project. A good place to do this would be into
      ~/drupal-vm
-
+```
     $ cd ~/
     $ git clone https://github.com/geerlingguy/drupal-vm.git
-
+```
   4. Copy our local configuration into drupal-vm
-   
+```
     $ cd ~/drupal-vm
     $ cp ~/Sites/away/starter/config.yml .
     $ cp ~/Sites/away/starter/drupal.make.yml .
-
+```
   5. If you used a different location in step 2. make sure you update the
      local_path value in config.yml. This directory will be NFS mounted inside
      your drupal-vm. Please note there are some default usernames and passwords
@@ -49,9 +49,9 @@ to do this is in ~/Sites
      wish.
 
   6. Create and provision the VM.
-
+```
     $ vagrant up
-
+```
 At this point you should see a lot of output which is the machine being created
 and all of the packages installed. Drupal will also be installed at this time.
 Look for "failed=0" on the final line, this indicates things were successful.
@@ -60,14 +60,15 @@ visiting http://192.168.88.88 in your browser and copying the address table in
 the top right of the page
 
   7. Add the new entries to the end of /etc/hosts, e.g.
-
+```
     $ vi /etc/hosts
+    ...
     192.168.88.88 drupalvm.dev
     192.168.88.88 adminer.drupalvm.dev
     192.168.88.88 xhprof.drupalvm.dev
     192.168.88.88 pimpmylog.drupalvm.dev
     192.168.88.88 dashboard.drupalvm.dev
-
+```
 
   8. Visit http://drupalvm.dev and log into your site (the username and password
      are set by drupal_account_name/drupal_account_password in config.yml
