@@ -16,7 +16,7 @@ $databases['default']['default'] = array(
 );
 
 
-$drupal_hash_salt = 'p89yasf8-Sdfsdyasdwkapdf8snadqKJHadasdpwqwe';
+$drupal_hash_salt = 'Replace With Your Own Salty Salt';
 
 $cookie_domain = '.away.dev';
 $base_url = 'https://away.dev';
@@ -25,7 +25,7 @@ $base_url = 'https://away.dev';
  * Reroute Email.
  */
 $conf['reroute_email_enable'] = '1';
-$conf['reroute_email_address'] = 'pittet@cs.ubc.ca';
+$conf['reroute_email_address'] = 'username@ubc.ca';
 
 /**
  * Logging Alerts.
@@ -37,3 +37,10 @@ $conf['emaillog_2'] = '';
 $conf['emaillog_3'] = '';
 $conf['emaillog_4'] = '';
 $conf['emaillog_5'] = '';
+
+/**
+ * Disable CSS and JS aggregation.
+ */
+$conf['preprocess_css'] = 0;
+$conf['preprocess_js'] = 0;
+
