@@ -20,16 +20,15 @@ Now we need to get a copy of the away repository. You should make a fork of the
 project on github.com and then clone *your* fork locally. On OS X, a good place
 to do this is in ~/Sites
 
-1. On Github, visit https://github.com/ubcfos/away and click the "Fork" button
-2. On your new fork, copy the clone URL and clone it to your laptop. We will
+1. On Github, visit https://github.com/ubcfos/away
+2. Clone the URL to your laptop. We will
      also add the ubcfos repository as an upstream so that we can gather
      changes from it later.
 
     ```
     $ cd ~/Sites
-    $ git clone https://github.com/<YOUR USERNAME>/away
+    $ git clone https://github.com/ubcfos/away
     $ cd away
-    $ git remote add upstream https://github.com/ubcfos/away
     ```
 
 3. Grab a copy of the drupal-vm project. A good place to do this would be into
@@ -86,5 +85,5 @@ the top right of the page
   the ulimit setting for open files, by running "ulimit -n 1024" then re-running
   the vagrant command. You can make this change permanent in .bash_profile if
   needed.
-  * xhprof doesn't work yet
+  * xhprof doesn't work yet for < PHP 7
 
