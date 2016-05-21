@@ -1,7 +1,7 @@
 ---
 # `vagrant_box` can also be set to geerlingguy/centos6, geerlingguy/centos7,
-# geerlingguy/ubuntu1404, geerlingguy/ubuntu1204, parallels/ubuntu-14.04, etc.
-vagrant_box: geerlingguy/ubuntu1404
+# geerlingguy/ubuntu1204, parallels/ubuntu-14.04, etc.
+vagrant_box: geerlingguy/centos7
 vagrant_user: vagrant
 vagrant_synced_folder_default_type: nfs
 
@@ -36,8 +36,8 @@ drupalvm_webserver: apache
 
 # Set this to false if you are using a different site deployment strategy and
 # would like to configure 'vagrant_synced_folders' and 'apache_vhosts' manually.
-build_makefile: true
-drush_makefile_path: ../../drupal.make.yml
+build_makefile: false
+# drush_makefile_path: {{ config_dir }}/drupal.make.yml
 
 # Set this to false if you don't need to install drupal (using the drupal_*
 # settings below), but instead copy down a database (e.g. using drush sql-sync).
@@ -87,11 +87,11 @@ apache_vhosts:
     extra_parameters: |
           ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ adminer_install_dir }}"
 
-#  - servername: "xhprof.{{ vagrant_hostname }}"
-#    documentroot: "{{ php_xhprof_html_dir }}"
-#    extra_parameters: |
-#          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ php_xhprof_html_dir }}"
-
+  - servername: "xhprof.{{ vagrant_hostname }}"
+    documentroot: "{{ php_xhprof_html_dir }}"
+    extra_parameters: |
+          ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ php_xhprof_html_dir }}"
+          
   - servername: "pimpmylog.{{ vagrant_hostname }}"
     documentroot: "{{ pimpmylog_install_dir }}"
     extra_parameters: |
@@ -121,9 +121,9 @@ nginx_hosts:
     root: "{{ adminer_install_dir }}"
     is_php: true
 
-#  - server_name: "xhprof.{{ vagrant_hostname }}"
-#    root: "{{ php_xhprof_html_dir }}"
-#    is_php: true
+  - server_name: "xhprof.{{ vagrant_hostname }}"
+    root: "{{ php_xhprof_html_dir }}"
+    is_php: true
 
   - server_name: "pimpmylog.{{ vagrant_hostname }}"
     root: "{{ pimpmylog_install_dir }}"
@@ -159,13 +159,13 @@ installed_extras:
   # - newrelic
   # - nodejs
   - pimpmylog
-  # - redis
+  - redis
   # - ruby
   # - selenium
   # - solr
   - varnish
   - xdebug
-  # - xhprof
+  - xhprof
 
 # Add any extra apt or yum packages you would like installed.
 extra_packages: []
@@ -183,7 +183,7 @@ ruby_install_gems: []
 # You can configure almost anything else on the server in the rest of this file.
 extra_security_enabled: false
 
-drush_version: "master"
+drush_version: "7.x"
 drush_keep_updated: true
 drush_composer_cli_options: "--prefer-dist --no-interaction"
 
@@ -200,9 +200,20 @@ firewall_allowed_tcp_ports:
   - "8983"
 firewall_log_dropped_packets: false
 
-# PHP Configuration. Currently-supported versions: 5.6, 7.0.
-# To use 5.6, see: http://docs.drupalvm.com/en/latest/other/php-56/
+-# PHP Configuration. Currently-supported versions: 5.6, 7.0.
+-# To use 5.6, see: http://docs.drupalvm.com/en/latest/other/php-56/
 php_version: "5.6"
+php_memory_limit: "192M"
+php_display_errors: "On"
+php_display_startup_errors: "On"
+php_realpath_cache_size: "1024K"
+php_sendmail_path: "/usr/sbin/ssmtp -t"
+php_opcache_enabled_in_ini: true
+php_opcache_memory_consumption: "192"
+php_opcache_max_accelerated_files: 4096
+php_max_input_vars: "4000"
+
+
 php_memcached_package: php5-memcached
 php_fpm_pool_conf_path: /etc/php5/fpm/pool.d/www.conf
 php_packages:
@@ -228,6 +239,9 @@ php_fpm_daemon: php5-fpm
 php_fpm_conf_path: "/etc/php5/fpm"
 php_mysql_package: php5-mysql
 
+# PHP 5.6 xhprof
+xhprof_download_url: https://github.com/phacility/xhprof/archive/master.tar.gz
+xhprof_download_folder_name: xhprof-master
 
 # Drupal VM defaults to using PHP-FPM with either Apache or Nginx. If you wish
 # to instead use Apache + mod_php with an Ubuntu base box, make sure you add
