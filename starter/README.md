@@ -16,14 +16,11 @@ homebrew. If you already have homebrew+cask you can skip the first two steps
   $ brew cask install vagrant
 ```
 
-Now we need to get a copy of the away repository. You should make a fork of the
-project on github.com and then clone *your* fork locally. On OS X, a good place
+Now we need to get a copy of the away repository. On OS X, a good place
 to do this is in ~/Sites
 
 1. On Github, visit https://github.com/ubcfos/away
-2. Clone the URL to your laptop. We will
-     also add the ubcfos repository as an upstream so that we can gather
-     changes from it later.
+2. Clone the URL to your laptop.
 
     ```
     $ cd ~/Sites
@@ -42,7 +39,6 @@ to do this is in ~/Sites
     ```
     $ cd ~/drupal-vm
     $ cp ~/Sites/away/starter/config.yml .
-    $ cp ~/Sites/away/starter/drupal.make.yml .
     ```
 
 5. If you used a different location in step 2. make sure you update the
