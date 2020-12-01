@@ -29,7 +29,6 @@ Thumbs.db
 *.swp
 
 # IDE files & folders
-# IDE folders (PHPStorm, Netbeans, etc)
 .idea
 nbproject
 *.project
